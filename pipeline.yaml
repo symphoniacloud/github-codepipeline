@@ -75,7 +75,7 @@ Resources:
       # Build and Deploy, etc., stages would follow. Here is an example
       - Name: Deploy
         Actions:
-        - Name: CreateChangeSet
+        - Name: CloudFormationDeploy
           ActionTypeId:
             Category: Deploy
             Owner: AWS
@@ -84,26 +84,12 @@ Resources:
           InputArtifacts:
             - Name: SourceCode
           Configuration:
-            ActionMode: CHANGE_SET_REPLACE
+            ActionMode: CREATE_UPDATE
             Capabilities: CAPABILITY_IAM
             RoleArn: !GetAtt CloudformationRole.Arn
             StackName: !Ref ApplicationStackName
-            ChangeSetName: changeset
             TemplatePath: !Sub "SourceCode::application.yaml"
           RunOrder: 1
-        - Name: ExecuteChangeSet
-          ActionTypeId:
-            Category: Deploy
-            Owner: AWS
-            Provider: CloudFormation
-            Version: '1'
-          Configuration:
-            ActionMode: CHANGE_SET_EXECUTE
-            Capabilities: CAPABILITY_IAM
-            ChangeSetName: changeset
-            RoleArn: !GetAtt CloudformationRole.Arn
-            StackName: !Ref ApplicationStackName
-          RunOrder: 2
 
   # 'GithubWebhook' satisfies two requirements:
   # -- Means that updates are pushed from GitHub, rather than AWS having to poll
