@@ -23,7 +23,7 @@ As part of the GitHub integration we make use of CodePipeline's ["GitHub Webhook
 
 1. Create a new GitHub personal access token for this application. See [here](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) for how to do this - CodePipeline needs just the `repo` scope permissions. I recommend you name the token for this particular pipeline, at least to get started, and that you store the token somewhere safe, like a password manager.
 
-1. :warning: The user associated with the personal access token above **MUST** have administrative rights for the Github repo - either by being an owner of the repo, or having been granted admin privs. Simply having write access is not sufficient. If your user has insufficient privileges the pipeline creation process will fail, but will create an stranded / undeletable version of your application stack.
+1. :warning: The user associated with the personal access token above **MUST** have administrative rights for the Github repo - either by being an owner of the repo, or having been granted admin privs. Simply having write access is not sufficient, because this template attempts to create a webhook in Github. If your user has insufficient privileges the pipeline creation process will fail, but will create an stranded / undeletable version of your application stack.
 
 1. By default the application CloudFormation stack will be named `github-codepipeline-app`, and the CodePipeline stack will be named `github-codepipeline`. If / when you want to change these then update the following files, looking for references to `github-codepipeline` :
     * `application.yaml`
