@@ -17,11 +17,13 @@ As part of the GitHub integration we make use of CodePipeline's ["GitHub Webhook
 
 ## How to create the pipeline
 
-1. Fork this repository to your own GitHub repository (or elsewhere.)
+1. Fork this repository to your own GitHub repository
 
-1. By default the application will use the Github repository `symphoniacloud/github-codepipeline` as its source repository. Update the `GitHubOwner` and `GitHubRepo` default parameter values in [`pipeline.yaml`](./pipeline.yaml) for your values.
+1. Update the `GitHubOwner` and `GitHubRepo` default parameter values in [`pipeline.yaml`](./pipeline.yaml) for your fork.
 
 1. Create a new GitHub personal access token for this application. See [here](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) for how to do this - CodePipeline needs just the `repo` scope permissions. I recommend you name the token for this particular pipeline, at least to get started, and that you store the token somewhere safe, like a password manager.
+
+1. :warning: The user associated with the personal access token above **MUST** have administrative rights for the Github repo - either by being an owner of the repo, or having been granted admin privs. Simply having write access is not sufficient. If your user has insufficient privileges the pipeline creation process will fail, but will create an stranded / undeletable version of your application stack.
 
 1. By default the application CloudFormation stack will be named `github-codepipeline-app`, and the CodePipeline stack will be named `github-codepipeline`. If / when you want to change these then update the following files, looking for references to `github-codepipeline` :
     * `application.yaml`
