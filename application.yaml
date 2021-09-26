@@ -5,5 +5,5 @@ Description: github-codepipeline-app
 # This is just here as an example resource
 
 Resources:
-  ApplicationBucket:
+  ApplicationBucket2:
     Type: AWS::S3::Bucket
