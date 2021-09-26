@@ -19,7 +19,7 @@ Parameters:
   # *** The owner of the Github repo for this application.
   GitHubOwner:
     Type: String
-    Default: symphoniacloud
+    Default: svennjegac
     AllowedPattern: "[A-Za-z0-9-]+"
 
   GitHubRepo:
