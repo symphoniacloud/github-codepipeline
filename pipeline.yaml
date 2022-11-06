@@ -10,7 +10,7 @@ Parameters:
     NoEcho: true
     MinLength: 93
     MaxLength: 93
-    AllowedPattern: '[_a-z0-9]*'
+    AllowedPattern: '[A-Za-z0-9_]*'
 
   # *** The remaining parameters should either be:
   # - overridden via changing "Default" here (PREFERABLE, since then they're in source control)
