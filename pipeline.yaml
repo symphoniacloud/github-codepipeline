@@ -8,9 +8,9 @@ Parameters:
   GitHubOAuthToken:
     Type: String
     NoEcho: true
-    MinLength: 40
-    MaxLength: 40
-    AllowedPattern: '[a-z0-9]*'
+    MinLength: 93
+    MaxLength: 93
+    AllowedPattern: '[_a-z0-9]*'
 
   # *** The remaining parameters should either be:
   # - overridden via changing "Default" here (PREFERABLE, since then they're in source control)
